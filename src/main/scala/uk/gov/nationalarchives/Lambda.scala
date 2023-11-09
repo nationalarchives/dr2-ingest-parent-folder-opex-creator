@@ -37,13 +37,8 @@ class Lambda extends RequestStreamHandler {
         .flatMap { opexXmlString => uploadToS3(opexXmlString, opexFileName, config.stagingCacheBucket) }
         .compile
         .toList
-      verifiedCompletedUpload <-
-        if (completedUpload.nonEmpty) IO(completedUpload)
-        else
-          IO.raiseError(
-            new Exception(s"No uploads were attempted for '$keyPrefix'")
-          )
-    } yield verifiedCompletedUpload
+      _ <- IO.raiseWhen(completedUpload.isEmpty)(new Exception(s"No uploads were attempted for '$keyPrefix'"))
+    } yield completedUpload.head
   }.unsafeRunSync()
 
   private def accumulatePrefixes(s: fs2.Stream[IO, String]): fs2.Stream[IO, List[String]] =
