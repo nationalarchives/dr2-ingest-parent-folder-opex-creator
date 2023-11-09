@@ -9,5 +9,5 @@ in our .opex file (Containing manifests) for the next level down.
 
 | Name                 | Description                                                                                 |
 |----------------------|---------------------------------------------------------------------------------------------|
-| staging-cache-bucket | The bucket from which to get the common prefixes from and where to upload the .opex file to |
+| STAGING_CACHE_BUCKET | The bucket from which to get the common prefixes from and where to upload the .opex file to |
 

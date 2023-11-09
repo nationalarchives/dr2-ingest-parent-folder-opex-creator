@@ -3,6 +3,7 @@ package uk.gov.nationalarchives
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
 import com.amazonaws.services.lambda.runtime.{Context, RequestStreamHandler}
+import fs2._
 import fs2.interop.reactivestreams._
 import pureconfig.ConfigSource
 import pureconfig.generic.auto._
@@ -69,8 +70,8 @@ class Lambda extends RequestStreamHandler {
       opexXmlContent: String,
       fileName: String,
       bucketName: String
-  ): fs2.Stream[IO, CompletedUpload] = fs2.Stream.eval {
-    fs2.Stream
+  ): Stream[IO, CompletedUpload] = Stream.eval {
+    Stream
       .emits[IO, Byte](opexXmlContent.getBytes)
       .chunks
       .map(_.toByteBuffer)
