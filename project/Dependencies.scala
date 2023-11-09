@@ -3,7 +3,7 @@ object Dependencies {
   private val mockitoScalaVersion = "1.17.22"
   lazy val pureConfigVersion = "0.17.4"
 
-  lazy val awsS3DbClient = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.27"
+  lazy val awsS3Client = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.27"
   lazy val logbackVersion = "2.20.0"
   lazy val log4jSlf4j = "org.apache.logging.log4j" % "log4j-slf4j-impl" % logbackVersion
   lazy val log4jCore = "org.apache.logging.log4j" % "log4j-core" % logbackVersion

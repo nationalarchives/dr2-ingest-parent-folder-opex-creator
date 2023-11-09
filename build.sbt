@@ -8,7 +8,7 @@ lazy val root = (project in file(".")).
   settings(
     name := "dr2-ingest-parent-folder-opex-creator",
     libraryDependencies ++= Seq(
-      awsS3DbClient,
+      awsS3Client,
       log4jSlf4j,
       log4jCore,
       log4jTemplateJson,
