@@ -1,6 +1,6 @@
 import sbt._
 object Dependencies {
-  private val mockitoScalaVersion = "1.17.22"
+  private val mockitoScalaVersion = "1.17.30"
   lazy val pureConfigVersion = "0.17.4"
 
   lazy val awsS3Client = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.34"
