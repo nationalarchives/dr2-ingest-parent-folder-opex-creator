@@ -7,8 +7,10 @@ ThisBuild / scalaVersion := "2.13.12"
 lazy val root = (project in file(".")).
   settings(
     name := "dr2-ingest-parent-folder-opex-creator",
+    resolvers += "s01-oss-sonatype-org-snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots",
     libraryDependencies ++= Seq(
       awsS3Client,
+      fs2Core,
       log4jSlf4j,
       log4jCore,
       log4jTemplateJson,
@@ -18,7 +20,7 @@ lazy val root = (project in file(".")).
       mockitoScalaTest % Test,
       pureConfigCats,
       pureConfig,
-      reactiveStreams,
+      reactorTest % Test,
       scalaTest % Test,
       scalaXml,
       upickle
