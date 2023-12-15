@@ -10,6 +10,7 @@ import software.amazon.awssdk.transfer.s3.model.CompletedUpload
 import uk.gov.nationalarchives.testUtils.ExternalServicesTestUtils
 
 import java.io.{ByteArrayInputStream, OutputStream}
+import scala.xml.PrettyPrinter
 
 class LambdaTest extends ExternalServicesTestUtils with MockitoSugar {
   val mockInput = s"""{"executionId":"9e32383f-52a7-4591-83dc-e3e598a6f1a7"}"""
@@ -37,11 +38,6 @@ class LambdaTest extends ExternalServicesTestUtils with MockitoSugar {
     mockLambda.handleRequest(mockInputStream, mockOutputStream, mockContext)
 
     mockLambda.verifyInvocationsAndArgumentsPassed(
-      List(
-        "dir3",
-        "dir2",
-        "dir1"
-      ),
       1
     )
   }
@@ -105,12 +101,27 @@ class LambdaTest extends ExternalServicesTestUtils with MockitoSugar {
     thrownException.getMessage should be("Bucket does not exist")
 
     mockLambda.verifyInvocationsAndArgumentsPassed(
-      List(
-        "dir3",
-        "dir2",
-        "dir1"
-      ),
       numberOfUploads = 1
     )
+  }
+
+  "generateOpexWithManifest" should "generate the correct xml" in {
+    val foldersInManifest = List("dir3", "dir2", "dir1")
+    val opexAsString = new Lambda().generateOpexWithManifest(List("dir3", "dir2", "dir1"))
+    val prettyPrinter = new PrettyPrinter(80, 2)
+    val expectedXml =
+      <opex:OPEXMetadata xmlns:opex="http://www.openpreservationexchange.org/opex/v1.2">
+        <opex:Transfer>
+          <opex:Manifest>
+            <opex:Folders>
+              <opex:Folder>{foldersInManifest.head}</opex:Folder>
+              <opex:Folder>{foldersInManifest(1)}</opex:Folder>
+              <opex:Folder>{foldersInManifest(2)}</opex:Folder>
+            </opex:Folders>
+          </opex:Manifest>
+        </opex:Transfer>
+      </opex:OPEXMetadata>
+
+    opexAsString should equal(prettyPrinter.format(expectedXml))
   }
 }
