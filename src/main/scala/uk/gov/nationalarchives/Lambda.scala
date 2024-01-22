@@ -47,7 +47,7 @@ class Lambda extends RequestStreamHandler {
     } yield completedUpload.head
   }.onError(logLambdaError).unsafeRunSync()
 
-  private def logLambdaError(error: Throwable): IO[Unit] = logger.error(error)("Error running start workflow")
+  private def logLambdaError(error: Throwable): IO[Unit] = logger.error(error)("Error running ingest parent folder opex creator")
 
   private def accumulatePrefixes(s: fs2.Stream[IO, String]): fs2.Stream[IO, List[String]] =
     s.fold[List[String]](Nil) { case (acc, path) =>
