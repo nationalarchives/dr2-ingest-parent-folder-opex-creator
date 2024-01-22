@@ -30,7 +30,7 @@ class Lambda extends RequestStreamHandler {
     val stepFnInput = default.read[StepFnInput](rawInput)
     val keyPrefix = s"opex/${stepFnInput.executionId}/"
     val opexFileName = s"$keyPrefix${stepFnInput.executionId}.opex"
-    val batchRef = stepFnInput.executionId.split("-").take(2).mkString("-")
+    val batchRef = stepFnInput.executionId.split("-").take(3).mkString("-")
     val log = logger.info(Map("batchRef" -> batchRef))(_)
     for {
       config <- ConfigSource.default.loadF[IO, Config]()
