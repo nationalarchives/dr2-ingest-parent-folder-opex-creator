@@ -1,10 +1,10 @@
 import sbt._
 object Dependencies {
   private val mockitoScalaVersion = "1.17.30"
-  lazy val pureConfigVersion = "0.17.4"
+  lazy val pureConfigVersion = "0.17.5"
 
   lazy val awsS3Client = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.35"
-  lazy val fs2Core = "co.fs2" %% "fs2-core" % "3.9.3-43-da2e1ce-SNAPSHOT"
+  lazy val fs2Core = "co.fs2" %% "fs2-core" % "3.9.4"
   lazy val logbackVersion = "2.22.1"
   lazy val log4jSlf4j = "org.apache.logging.log4j" % "log4j-slf4j-impl" % logbackVersion
   lazy val log4jCore = "org.apache.logging.log4j" % "log4j-core" % logbackVersion
