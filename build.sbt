@@ -1,4 +1,4 @@
-import Dependencies._
+import Dependencies.{log4CatsCore, log4CatsSlf4j, *}
 import uk.gov.nationalarchives.sbt.Log4j2MergePlugin.log4j2MergeStrategy
 
 ThisBuild / organization := "uk.gov.nationalarchives"
@@ -13,6 +13,8 @@ lazy val root = (project in file(".")).settings(
     log4jSlf4j,
     log4jCore,
     log4jTemplateJson,
+    log4CatsCore,
+    log4CatsSlf4j,
     lambdaCore,
     lambdaJavaEvents,
     mockitoScala % Test,
