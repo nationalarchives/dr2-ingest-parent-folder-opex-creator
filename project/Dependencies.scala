@@ -21,6 +21,6 @@ object Dependencies {
   lazy val pureConfig = "com.github.pureconfig" %% "pureconfig" % pureConfigVersion
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18"
   lazy val scalaXml = "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
-  lazy val upickle = "com.lihaoyi" %% "upickle" % "3.1.5"
+  lazy val upickle = "com.lihaoyi" %% "upickle" % "3.2.0"
   lazy val reactorTest = "io.projectreactor" % "reactor-test" % "3.6.2"
 }
