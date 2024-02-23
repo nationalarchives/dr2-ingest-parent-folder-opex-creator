@@ -4,9 +4,9 @@ object Dependencies {
   lazy val pureConfigVersion = "0.17.5"
   private val log4CatsVersion = "2.6.0"
 
-  lazy val awsS3Client = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.35"
+  lazy val awsS3Client = "uk.gov.nationalarchives" %% "da-s3-client" % "0.1.36"
   lazy val fs2Core = "co.fs2" %% "fs2-core" % "3.9.4"
-  lazy val logbackVersion = "2.22.1"
+  lazy val logbackVersion = "2.23.0"
   lazy val log4jSlf4j = "org.apache.logging.log4j" % "log4j-slf4j-impl" % logbackVersion
   lazy val log4jCore = "org.apache.logging.log4j" % "log4j-core" % logbackVersion
   lazy val log4jTemplateJson = "org.apache.logging.log4j" % "log4j-layout-template-json" % logbackVersion
@@ -21,6 +21,6 @@ object Dependencies {
   lazy val pureConfig = "com.github.pureconfig" %% "pureconfig" % pureConfigVersion
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18"
   lazy val scalaXml = "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
-  lazy val upickle = "com.lihaoyi" %% "upickle" % "3.1.5"
+  lazy val upickle = "com.lihaoyi" %% "upickle" % "3.2.0"
   lazy val reactorTest = "io.projectreactor" % "reactor-test" % "3.6.2"
 }
