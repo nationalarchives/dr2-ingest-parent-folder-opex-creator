@@ -2,7 +2,7 @@ import Dependencies.{log4CatsCore, log4CatsSlf4j, *}
 import uk.gov.nationalarchives.sbt.Log4j2MergePlugin.log4j2MergeStrategy
 
 ThisBuild / organization := "uk.gov.nationalarchives"
-ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / scalaVersion := "2.13.13"
 
 lazy val root = (project in file(".")).settings(
   name := "dr2-ingest-parent-folder-opex-creator",
